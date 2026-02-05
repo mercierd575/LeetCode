@@ -1,6 +1,5 @@
 import unittest
 import time
-import datetime
 from sudokuSolver import solveSudoku
 
 
@@ -57,7 +56,7 @@ class MyTestCase(unittest.TestCase):
                            ['5','4','9','1','7','8','2','6','3']]
 
         self.assertEqual(board, expected_output)
-        self.assertLess(time.time() - start, 5.0)
+        self.assertLess(time.time() - start, 2.0)
 
 
 
