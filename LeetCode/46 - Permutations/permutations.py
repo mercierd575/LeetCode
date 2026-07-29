@@ -2,20 +2,13 @@ from typing import List
 
 
 def permute(nums: List[int]) -> List[List[int]]:
-    result: List[List[int]] = [[]]
-    if len(nums) <= 2:
-        return [nums[::-1]]
-    for num in nums:
-        result.append(nums[:num] + nums[num:])
+    answer: List[List[int]] = []
+    if len(nums) <= 1:
+        return [nums[:]]
+    for k in range(len(nums)):
+        l: List[int] = [nums[k]]
+        w: List[int] = nums[:k] + nums[k + 1:]
+        for p in permute(w):
+            answer.append(l + p)
 
-    pos = 0
-
-    for option in result:
-        pos += 1
-        posY = 0
-        for answer in result:
-            if option == answer and pos != posY:
-                result = result[:posY] + result[posY:]
-            posY += 1
-
-    return result
+    return answer
